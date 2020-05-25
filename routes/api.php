@@ -24,4 +24,5 @@ Route::middleware('auth:sanctum')->group(function () {
         'index',
         'show',
     ]);
+    Route::apiResource('degrees', 'DegreeController')->only(['index', 'show']);
 });

@@ -4,24 +4,26 @@ namespace App\Nova;
 
 use Laravel\Nova\Fields\ID;
 use Illuminate\Http\Request;
+use Laravel\Nova\Fields\Date;
 use Laravel\Nova\Fields\Text;
+use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Http\Requests\NovaRequest;
 
-class Institution extends Resource
+class Degree extends Resource
 {
     /**
      * The model the resource corresponds to.
      *
      * @var string
      */
-    public static $model = \App\Institution::class;
+    public static $model = \App\Degree::class;
 
     /**
      * The single value that should be used to represent the resource when being displayed.
      *
      * @var string
      */
-    public static $title = 'name';
+    public static $title = 'id';
 
     /**
      * The columns that should be searched.
@@ -40,9 +42,11 @@ class Institution extends Resource
     {
         return [
             ID::make()->sortable(),
-            Text::make('Name'),
-            Text::make('City'),
-            Text::make('State'),
+            Text::make('Level'),
+            Text::make('Field'),
+            Text::make('Specialty')->nullable(),
+            Date::make('Graduation')->nullable(),
+            BelongsTo::make('Institution'),
         ];
     }
 

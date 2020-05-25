@@ -1,5 +1,6 @@
 <?php
 
+use App\Institution;
 use App\User;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Database\Seeder;
@@ -17,5 +18,6 @@ class BasicSetupSeeder extends Seeder
             'email' => 'a@a.com',
             'password' => Hash::make('a'),
         ]);
+        factory(Institution::class, 10)->create();
     }
 }
