@@ -20,4 +20,8 @@ Route::middleware('auth:sanctum')->group(function () {
         'index',
         'show',
     ]);
+    Route::apiResource('institutions', 'InstitutionController')->only([
+        'index',
+        'show',
+    ]);
 });
