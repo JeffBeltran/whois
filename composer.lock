@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "ec655a24136bf56ef205fc13e28b5aa4",
+    "content-hash": "581c0c864a01b74950e5bdd979fae813",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -672,6 +672,49 @@
                 "schedule"
             ],
             "time": "2019-03-31T00:38:28+00:00"
+        },
+        {
+            "name": "drobee/nova-sluggable",
+            "version": "1.2.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/drobee/nova-sluggable.git",
+                "reference": "87e34364b8dbf941c93dbb647916e20ee1b0202c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/drobee/nova-sluggable/zipball/87e34364b8dbf941c93dbb647916e20ee1b0202c",
+                "reference": "87e34364b8dbf941c93dbb647916e20ee1b0202c",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/http": "5.6.*|5.7.*|5.8.*|6.*|7.*",
+                "illuminate/support": "5.6.*|5.7.*|5.8.*|6.*|7.*",
+                "php": ">=7.1.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Drobee\\NovaSluggable\\FieldServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Drobee\\NovaSluggable\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "Slug field for Laravel Nova",
+            "keywords": [
+                "laravel",
+                "nova"
+            ],
+            "time": "2020-03-06T15:34:47+00:00"
         },
         {
             "name": "egulias/email-validator",
@@ -4791,6 +4834,57 @@
                 "test"
             ],
             "time": "2016-01-20T08:20:44+00:00"
+        },
+        {
+            "name": "laracasts/generators",
+            "version": "1.1.9",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/laracasts/Laravel-5-Generators-Extended.git",
+                "reference": "6d628e0bbcaf913e10024be43231969e8f039432"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/laracasts/Laravel-5-Generators-Extended/zipball/6d628e0bbcaf913e10024be43231969e8f039432",
+                "reference": "6d628e0bbcaf913e10024be43231969e8f039432",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/support": "^5.8|~6.0|~7.0",
+                "php": ">=5.4.0"
+            },
+            "require-dev": {
+                "phpspec/phpspec": "~2.1"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Laracasts\\Generators\\GeneratorsServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Laracasts\\Generators\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Jeffrey Way",
+                    "email": "jeffrey@laracasts.com"
+                }
+            ],
+            "description": "Advanced Laravel generators, that include schema information.",
+            "keywords": [
+                "generators",
+                "laravel"
+            ],
+            "time": "2020-03-29T05:06:14+00:00"
         },
         {
             "name": "mockery/mockery",

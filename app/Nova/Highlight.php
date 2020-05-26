@@ -2,35 +2,36 @@
 
 namespace App\Nova;
 
-use Illuminate\Http\Request;
-use Laravel\Nova\Fields\Gravatar;
-use Laravel\Nova\Fields\HasOne;
+use Illuminate\Support\Str;
 use Laravel\Nova\Fields\ID;
-use Laravel\Nova\Fields\Password;
-use Laravel\Nova\Fields\Text;
+use Illuminate\Http\Request;
+use Laravel\Nova\Fields\HasMany;
+use Laravel\Nova\Fields\Textarea;
+use Laravel\Nova\Fields\BelongsTo;
+use Laravel\Nova\Fields\BelongsToMany;
+use Laravel\Nova\Http\Requests\NovaRequest;
 
-class User extends Resource
+class Highlight extends Resource
 {
     /**
      * The model the resource corresponds to.
      *
      * @var string
      */
-    public static $model = \App\User::class;
+    public static $model = \App\Highlight::class;
 
-    /**
-     * The single value that should be used to represent the resource when being displayed.
-     *
-     * @var string
-     */
-    public static $title = 'email';
+    public function title()
+    {
+        $company = $this->job->company->name;
+        return Str::limit($this->description, 50) . "($company)";
+    }
 
     /**
      * The columns that should be searched.
      *
      * @var array
      */
-    public static $search = ['id', 'email'];
+    public static $search = ['id'];
 
     /**
      * Get the fields displayed by the resource.
@@ -42,21 +43,14 @@ class User extends Resource
     {
         return [
             ID::make()->sortable(),
-
-            Gravatar::make()->maxWidth(50),
-
-            Text::make('Email')
-                ->sortable()
-                ->rules('required', 'email', 'max:254')
-                ->creationRules('unique:users,email')
-                ->updateRules('unique:users,email,{{resourceId}}'),
-
-            Password::make('Password')
-                ->onlyOnForms()
-                ->creationRules('required', 'string', 'min:8')
-                ->updateRules('nullable', 'string', 'min:8'),
-
-            HasOne::make('Profile'),
+            BelongsTo::make('Job'),
+            Textarea::make('Description')
+                ->displayUsing(function ($text) {
+                    return Str::limit($text, 100);
+                })
+                ->showOnIndex()
+                ->alwaysShow(),
+            BelongsToMany::make('Skills'),
         ];
     }
 
