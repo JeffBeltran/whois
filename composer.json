@@ -17,6 +17,7 @@
         "laravel/nova": "~3.0",
         "laravel/sanctum": "^2.3",
         "laravel/tinker": "^2.0",
+        "laravel/vapor-cli": "^1.6",
         "laravel/vapor-core": "^2.7",
         "spatie/laravel-query-builder": "^2.8"
     },
