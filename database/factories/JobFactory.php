@@ -14,6 +14,7 @@ $factory->define(Job::class, function (Faker $faker) {
         'state' => $faker->stateAbbr,
         'start' => $faker->dateTimeThisDecade(),
         'end' => $faker->dateTimeThisDecade(),
+        'project' => $faker->boolean(),
         'company_id' => factory(Company::class),
     ];
 });

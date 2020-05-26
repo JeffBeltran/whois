@@ -10,6 +10,7 @@ class Job extends Model
         'start' => 'date',
         'end' => 'date',
         'company_id' => 'integer',
+        'project' => 'boolean',
     ];
 
     public function company()

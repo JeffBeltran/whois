@@ -40,6 +40,7 @@ class ReadTest extends TestCase
             'end' => $job->end,
             'city' => $job->city,
             'state' => $job->state,
+            'project' => $job->project,
             'company_id' => $job->company_id,
             'created_at' => $job->created_at->toISOString(),
             'updated_at' => $job->updated_at->toISOString(),
