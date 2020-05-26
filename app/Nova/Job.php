@@ -4,11 +4,12 @@ namespace App\Nova;
 
 use Laravel\Nova\Fields\ID;
 use Illuminate\Http\Request;
-use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\Date;
-use Laravel\Nova\Fields\HasMany;
 use Laravel\Nova\Fields\Text;
+use Laravel\Nova\Fields\Boolean;
+use Laravel\Nova\Fields\HasMany;
 use Laravel\Nova\Fields\Textarea;
+use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Http\Requests\NovaRequest;
 
 class Job extends Resource
@@ -46,6 +47,7 @@ class Job extends Resource
             Text::make('Title'),
             Textarea::make('Description')->alwaysShow(),
             BelongsTo::make('Company'),
+            Boolean::make('Project'),
             Text::make('City'),
             Text::make('State'),
             Date::make('Start'),
