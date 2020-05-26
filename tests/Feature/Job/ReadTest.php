@@ -38,6 +38,8 @@ class ReadTest extends TestCase
             'description' => $job->description,
             'start' => $job->start,
             'end' => $job->end,
+            'city' => $job->city,
+            'state' => $job->state,
             'company_id' => $job->company_id,
             'created_at' => $job->created_at->toISOString(),
             'updated_at' => $job->updated_at->toISOString(),
@@ -64,6 +66,7 @@ class ReadTest extends TestCase
         return [
             'company relationship allowed' => ['company'],
             'highlights relationship allowed' => ['highlights'],
+            'highlights.skills relationship allowed' => ['highlights.skills'],
         ];
     }
 

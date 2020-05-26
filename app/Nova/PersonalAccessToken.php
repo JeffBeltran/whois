@@ -44,7 +44,6 @@ class PersonalAccessToken extends Resource
         return [
             ID::make()->sortable(),
             Text::make('Name'),
-            Text::make('Token'),
             Text::make('Abilities'),
             DateTime::make('Last Used At'),
             MorphTo::make('Tokenable'),

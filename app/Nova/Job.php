@@ -47,6 +47,8 @@ class Job extends Resource
             Text::make('Title'),
             Textarea::make('Description')->alwaysShow(),
             BelongsTo::make('Company'),
+            Text::make('City'),
+            Text::make('State'),
             Date::make('Start'),
             Date::make('End')->nullable(),
             HasMany::make('Highlights'),

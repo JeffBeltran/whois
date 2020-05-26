@@ -47,6 +47,7 @@ class BrowseTest extends TestCase
         return [
             'company relationship allowed' => ['company'],
             'highlights relationship allowed' => ['highlights'],
+            'highlights.skills relationship allowed' => ['highlights.skills'],
         ];
     }
 

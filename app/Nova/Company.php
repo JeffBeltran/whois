@@ -42,8 +42,6 @@ class Company extends Resource
         return [
             ID::make()->sortable(),
             Text::make('Name'),
-            Text::make('City'),
-            Text::make('State'),
             HasMany::make('Jobs'),
         ];
     }

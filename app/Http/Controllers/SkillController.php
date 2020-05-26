@@ -16,7 +16,7 @@ class SkillController extends Controller
     public function index()
     {
         return QueryBuilder::for(Skill::class)
-            ->allowedIncludes(['highlights', 'parent', 'children'])
+            ->allowedIncludes(['highlights.skills', 'parent', 'children'])
             ->get();
     }
 
@@ -29,7 +29,7 @@ class SkillController extends Controller
     public function show($id)
     {
         return QueryBuilder::for(Skill::where('id', $id))
-            ->allowedIncludes(['highlights', 'parent', 'children'])
+            ->allowedIncludes(['highlights.skills', 'parent', 'children'])
             ->firstOrFail();
     }
 }

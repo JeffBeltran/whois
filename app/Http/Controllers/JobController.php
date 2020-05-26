@@ -16,7 +16,7 @@ class JobController extends Controller
     public function index()
     {
         return QueryBuilder::for(Job::class)
-            ->allowedIncludes(['company', 'highlights'])
+            ->allowedIncludes(['company', 'highlights.skills'])
             ->get();
     }
 
@@ -29,7 +29,7 @@ class JobController extends Controller
     public function show($id)
     {
         return QueryBuilder::for(Job::where('id', $id))
-            ->allowedIncludes(['company', 'highlights'])
+            ->allowedIncludes(['company', 'highlights.skills'])
             ->firstOrFail();
     }
 }

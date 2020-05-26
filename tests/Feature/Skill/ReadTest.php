@@ -63,6 +63,9 @@ class ReadTest extends TestCase
     {
         return [
             'highlights relationship allowed' => ['highlights'],
+            'highlights with skills relationship allowed' => [
+                'highlights.skills',
+            ],
             'parent relationship allowed' => ['parent'],
             'children relationship allowed' => ['children'],
         ];

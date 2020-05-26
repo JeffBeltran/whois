@@ -35,8 +35,6 @@ class ReadTest extends TestCase
         $response->assertStatus(200)->assertExactJson([
             'id' => $company->id,
             'name' => $company->name,
-            'city' => $company->city,
-            'state' => $company->state,
             'created_at' => $company->created_at->toISOString(),
             'updated_at' => $company->updated_at->toISOString(),
         ]);

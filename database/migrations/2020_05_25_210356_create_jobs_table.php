@@ -19,6 +19,8 @@ class CreateJobsTable extends Migration
             $table->text('description');
             $table->date('start');
             $table->date('end')->nullable();
+            $table->string('city');
+            $table->string('state');
             $table->unsignedBigInteger('company_id');
             $table->timestamps();
         });
