@@ -50,7 +50,7 @@ class Highlight extends Resource
                 })
                 ->showOnIndex()
                 ->alwaysShow(),
-            BelongsToMany::make('Skills'),
+            BelongsToMany::make('Skills')->searchable(),
         ];
     }
 

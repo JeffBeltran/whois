@@ -35,7 +35,7 @@ class Skill extends Resource
      *
      * @var array
      */
-    public static $search = ['id'];
+    public static $search = ['id', 'name'];
 
     /**
      * Get the fields displayed by the resource.
@@ -58,7 +58,9 @@ class Skill extends Resource
                 }),
             Textarea::make('Note')->nullable(),
             BelongsToMany::make('Highlights'),
-            BelongsTo::make('Parent Skill', 'parent', Skill::class)->nullable(),
+            BelongsTo::make('Parent Skill', 'parent', Skill::class)
+                ->nullable()
+                ->showCreateRelationButton(),
             HasMany::make('Child Skills', 'children', Skill::class)->nullable(),
         ];
     }

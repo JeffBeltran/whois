@@ -20,12 +20,11 @@ class Job extends Resource
      */
     public static $model = \App\Job::class;
 
-    /**
-     * The single value that should be used to represent the resource when being displayed.
-     *
-     * @var string
-     */
-    public static $title = 'title';
+    public function title()
+    {
+        $company = $this->company->name;
+        return $this->title . "($company)";
+    }
 
     /**
      * The columns that should be searched.
