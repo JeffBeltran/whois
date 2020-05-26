@@ -1,26 +1,27 @@
 <?php
 
-namespace Tests\Feature\User;
+namespace Tests\Feature\Job;
 
 use App\User;
-use Illuminate\Foundation\Testing\RefreshDatabase;
+use App\Job;
 use Tests\TestCase;
+use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class BrowseTest extends TestCase
 {
     use RefreshDatabase;
 
     /** @test */
-    public function testUserCanBrowseUser()
+    public function testUserCanBrowseJob()
     {
         $this->withoutExceptionHandling();
 
-        factory(User::class, 4)->create();
+        factory(Job::class, 5)->create();
 
         $response = $this->actingAs(
             factory(User::class)->create(),
             'sanctum'
-        )->json('GET', '/api/users');
+        )->json('GET', '/api/jobs');
 
         $response->assertStatus(200)->assertJsonCount(5);
     }
@@ -36,7 +37,7 @@ class BrowseTest extends TestCase
         $response = $this->actingAs(
             factory(User::class)->create(),
             'sanctum'
-        )->json('GET', "/api/users?include=$relationName");
+        )->json('GET', "/api/jobs?include=$relationName");
 
         $response->assertStatus(200);
     }
@@ -44,14 +45,15 @@ class BrowseTest extends TestCase
     public function allowedRelationships()
     {
         return [
-            'profile relationship allowed' => ['profile'],
+            'company relationship allowed' => ['company'],
+            'highlights relationship allowed' => ['highlights'],
         ];
     }
 
     /** @test */
     public function testRequiresUserToBeLoggedIn()
     {
-        $response = $this->json('GET', '/api/users');
+        $response = $this->json('GET', '/api/jobs');
 
         $response->assertStatus(401);
     }

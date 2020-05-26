@@ -40,20 +40,26 @@ class ReadTest extends TestCase
         ]);
     }
 
-    /** @test */
-    public function testReturnsUserDetailsWithTheirProfile()
+    /**
+     * @test
+     * @dataProvider allowedRelationships
+     * */
+    public function testCanGetRelations($relationName)
     {
         $this->withoutExceptionHandling();
 
-        $user = factory(User::class)->create();
-        factory(Profile::class)->create([
-            'user_id' => $user->id,
-        ]);
+        $skill = factory(User::class)->create();
 
-        $response = $this->readModel($user->id, '?include=profile');
+        $response = $this->readModel($skill->id, "?include=$relationName");
 
-        $response->assertStatus(200)->assertJsonStructure(['profile']);
-        $this->assertNotNull($response['profile']);
+        $response->assertStatus(200);
+    }
+
+    public function allowedRelationships()
+    {
+        return [
+            'profile relationship allowed' => ['profile'],
+        ];
     }
 
     /** @test */

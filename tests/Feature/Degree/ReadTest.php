@@ -47,34 +47,23 @@ class ReadTest extends TestCase
 
     /**
      * @test
-     * @dataProvider belongsToRelationships
+     * @dataProvider allowedRelationships
      * */
-    public function testReturnsBelongsToRelationship(
-        $modelNameSpace,
-        $relationKey,
-        $relationName
-    ) {
+    public function testCanGetRelations($relationName)
+    {
         $this->withoutExceptionHandling();
 
-        $relationModel = factory($modelNameSpace)->create();
-        $degree = factory(Degree::class)->create([
-            $relationKey => $relationModel->id,
-        ]);
+        $degree = factory(Degree::class)->create();
 
         $response = $this->readModel($degree->id, "?include=$relationName");
 
-        $response->assertStatus(200)->assertJsonStructure(["$relationName"]);
-        $this->assertNotNull($response["$relationName"]);
+        $response->assertStatus(200);
     }
 
-    public function belongsToRelationships()
+    public function allowedRelationships()
     {
         return [
-            'institution relationship' => [
-                Institution::class,
-                'institution_id',
-                'institution',
-            ],
+            'institution relationship allowed' => ['institution'],
         ];
     }
 

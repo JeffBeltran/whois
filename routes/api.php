@@ -15,8 +15,12 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::middleware('auth:sanctum')->group(function () {
-    Route::apiResource('users', 'UserController')->only(['index', 'show']);
-    Route::apiResource('profiles', 'ProfileController')->only([
+    Route::apiResource('companies', 'CompanyController')->only([
+        'index',
+        'show',
+    ]);
+    Route::apiResource('degrees', 'DegreeController')->only(['index', 'show']);
+    Route::apiResource('highlights', 'HighlightController')->only([
         'index',
         'show',
     ]);
@@ -24,5 +28,11 @@ Route::middleware('auth:sanctum')->group(function () {
         'index',
         'show',
     ]);
-    Route::apiResource('degrees', 'DegreeController')->only(['index', 'show']);
+    Route::apiResource('jobs', 'JobController')->only(['index', 'show']);
+    Route::apiResource('profiles', 'ProfileController')->only([
+        'index',
+        'show',
+    ]);
+    Route::apiResource('skills', 'SkillController')->only(['index', 'show']);
+    Route::apiResource('users', 'UserController')->only(['index', 'show']);
 });

@@ -16,7 +16,7 @@ class UserController extends Controller
     public function index()
     {
         return QueryBuilder::for(User::class)
-            ->allowedIncludes([])
+            ->allowedIncludes(['profile'])
             ->get();
     }
 

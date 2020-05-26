@@ -1,9 +1,9 @@
 <?php
 
-namespace Tests\Feature\Profile;
+namespace Tests\Feature\Skill;
 
 use App\User;
-use App\Profile;
+use App\Skill;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
@@ -17,30 +17,30 @@ class ReadTest extends TestCase
             return $this->actingAs(
                 factory(User::class)->create(),
                 'sanctum'
-            )->json('GET', "/api/profiles/$id" . $params);
+            )->json('GET', "/api/skills/$id" . $params);
         } else {
-            return $this->json('GET', "/api/profiles/$id" . $params);
+            return $this->json('GET', "/api/skills/$id" . $params);
         }
     }
 
     /** @test */
-    public function testReturnsProfileDetailsForTheGivenId()
+    public function testReturnsSkillDetailsForTheGivenId()
     {
         $this->withoutExceptionHandling();
 
-        $profile = factory(Profile::class)->create();
+        $skill = factory(Skill::class)->create();
 
-        $response = $this->readModel($profile->id);
+        $response = $this->readModel($skill->id);
 
         $response->assertStatus(200)->assertExactJson([
-            'id' => $profile->id,
-            'first_name' => $profile->first_name,
-            'last_name' => $profile->last_name,
-            'city' => $profile->city,
-            'state' => $profile->state,
-            'user_id' => $profile->user_id,
-            'created_at' => $profile->created_at->toISOString(),
-            'updated_at' => $profile->updated_at->toISOString(),
+            'id' => $skill->id,
+            'name' => $skill->name,
+            'slug' => $skill->slug,
+            'website' => $skill->website,
+            'note' => $skill->note,
+            'parent_id' => $skill->parent_id,
+            'created_at' => $skill->created_at->toISOString(),
+            'updated_at' => $skill->updated_at->toISOString(),
         ]);
     }
 
@@ -52,7 +52,7 @@ class ReadTest extends TestCase
     {
         $this->withoutExceptionHandling();
 
-        $skill = factory(Profile::class)->create();
+        $skill = factory(Skill::class)->create();
 
         $response = $this->readModel($skill->id, "?include=$relationName");
 
@@ -62,14 +62,16 @@ class ReadTest extends TestCase
     public function allowedRelationships()
     {
         return [
-            'user relationship allowed' => ['user'],
+            'highlights relationship allowed' => ['highlights'],
+            'parent relationship allowed' => ['parent'],
+            'children relationship allowed' => ['children'],
         ];
     }
 
     /** @test */
-    public function testProfileMustHaveReadPermissionToViewDetails()
+    public function testSkillMustHaveReadPermissionToViewDetails()
     {
-        $user = factory(Profile::class)->create();
+        $user = factory(Skill::class)->create();
 
         $response = $this->readModel($user->id, '', false);
 

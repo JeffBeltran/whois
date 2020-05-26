@@ -13,5 +13,7 @@ $factory->define(Skill::class, function (Faker $faker) {
             return Str::slug($skill['name'], '-');
         },
         'website' => $faker->url,
+        'note' => $faker->optional()->text(),
+        'parent_id' => 42,
     ];
 });

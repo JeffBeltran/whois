@@ -6,6 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Skill extends Model
 {
+    protected $casts = [
+        'parent_id' => 'integer',
+    ];
+
     public function highlights()
     {
         return $this->belongsToMany(Highlight::class);
