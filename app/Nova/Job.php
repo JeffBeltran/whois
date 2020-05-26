@@ -46,7 +46,7 @@ class Job extends Resource
             ID::make()->sortable(),
             Text::make('Title'),
             Textarea::make('Description')->alwaysShow(),
-            BelongsTo::make('Company'),
+            BelongsTo::make('Company')->showCreateRelationButton(),
             Boolean::make('Project'),
             Text::make('City'),
             Text::make('State'),

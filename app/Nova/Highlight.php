@@ -43,7 +43,7 @@ class Highlight extends Resource
     {
         return [
             ID::make()->sortable(),
-            BelongsTo::make('Job'),
+            BelongsTo::make('Job')->showCreateRelationButton(),
             Textarea::make('Description')
                 ->displayUsing(function ($text) {
                     return Str::limit($text, 100);

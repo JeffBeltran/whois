@@ -46,7 +46,7 @@ class Degree extends Resource
             Text::make('Field'),
             Text::make('Specialty')->nullable(),
             Date::make('Graduation')->nullable(),
-            BelongsTo::make('Institution'),
+            BelongsTo::make('Institution')->showCreateRelationButton(),
         ];
     }
 
