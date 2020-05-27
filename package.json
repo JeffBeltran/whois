@@ -1,4 +1,6 @@
 {
+    "name": "whois",
+    "version": "0",
     "repository": "github:JeffBeltran/whois",
     "private": true,
     "release": {
