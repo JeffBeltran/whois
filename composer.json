@@ -14,6 +14,7 @@
         "fideloper/proxy": "^4.2",
         "fruitcake/laravel-cors": "^1.0",
         "guzzlehttp/guzzle": "^6.3",
+        "jeffbeltran/sanctum-tokens": "^1.0",
         "laravel/framework": "^7.0",
         "laravel/nova": "~3.0",
         "laravel/sanctum": "^2.3",
@@ -63,6 +64,9 @@
         }
     ],
     "scripts": {
+        "post-update-cmd": [
+            "@php artisan nova:publish"
+        ],
         "post-autoload-dump": [
             "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
             "@php artisan package:discover --ansi"
