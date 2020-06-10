@@ -2,13 +2,14 @@
 
 namespace App\Nova;
 
-use Illuminate\Http\Request;
-use Laravel\Nova\Fields\Gravatar;
-use Laravel\Nova\Fields\HasOne;
 use Laravel\Nova\Fields\ID;
-use Laravel\Nova\Fields\MorphMany;
-use Laravel\Nova\Fields\Password;
+use Illuminate\Http\Request;
 use Laravel\Nova\Fields\Text;
+use Laravel\Nova\Fields\HasOne;
+use Laravel\Nova\Fields\Gravatar;
+use Laravel\Nova\Fields\Password;
+use Laravel\Nova\Fields\MorphMany;
+use Jeffbeltran\SanctumTokens\SanctumTokens;
 
 class User extends Resource
 {
@@ -58,7 +59,7 @@ class User extends Resource
                 ->updateRules('nullable', 'string', 'min:8'),
 
             HasOne::make('Profile'),
-            MorphMany::make('Tokens', 'tokens', PersonalAccessToken::class),
+            SanctumTokens::make(),
         ];
     }
 

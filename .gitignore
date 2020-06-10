@@ -13,3 +13,4 @@ yarn-error.log
 auth.json.vapor/
 .env.production
 .env.staging
+auth.json
